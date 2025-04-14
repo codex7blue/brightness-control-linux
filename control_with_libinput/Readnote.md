@@ -24,9 +24,9 @@
    ```
    - ini sangat penting karena output-nya harus sesuai untuk di tulis pada file script **libinput-brightness.sh**:
    ```
-#!/bin/sh
+   #!/bin/sh
 
-libinput debug-events --device /dev/input/event* | while read -r line; do
+   libinput debug-events --device /dev/input/event* | while read -r line; do
     case "$line" in
         *"........................................................................."*)
             /usr/local/bin/brightness.sh up
@@ -35,7 +35,7 @@ libinput debug-events --device /dev/input/event* | while read -r line; do
             /usr/local/bin/brightness.sh down
             ;;
     esac
-done
+   done
    ```
 
 4. Pindahkan file script berikut ke <mark>/usr/local/bin/</mark>
