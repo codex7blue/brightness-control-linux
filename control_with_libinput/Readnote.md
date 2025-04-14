@@ -1,25 +1,28 @@
 ## Panduan Setup Brightness Control dengan libinput + runit
 
 1. Pastikan paket <mark>libinput</mark>sudah terinstall:
-   ```sudo xbps-install -S libinput
+   ```
+   sudo xbps-install -S libinput
    ```
 2. Cek device brightness key dengan:
-   ```sudo libinput list-devices
+   ```
+   sudo libinput list-devices
    ```
    Cari device bernama:
-  ``` Device: Video Bus
-          Kernel: /dev/input/eventX  <== catat eventX yang sesuai (misal: /dev/input/event4)
+  ```
+   Device: Video Bus
+   Kernel: /dev/input/eventX  <== catat eventX yang sesuai (misal: /dev/input/event4)
   ```
 3. Tes apakah device tersebut benar:
 ```
    sudo libinput debug-events --device /dev/input/eventX
 ```
-   Tekan tombol khusus brightness up dan down di keyboard kalian,
-   pastikan muncul output seperti contoh:
-```KEY_BRIGHTNESSUP (225) pressed 
-       KEY_BRIGHTNESSDOWN (224) pressed 
+   - Tekan tombol khusus brightness up dan down di keyboard kalian, pastikan muncul output seperti contoh:
 ```
-   ini sangat penting karena output-nya harus sesuai untuk di tulis pada file script <mark>libinput-brightness.sh</mark>:
+   KEY_BRIGHTNESSUP (225) pressed 
+   KEY_BRIGHTNESSDOWN (224) pressed 
+```
+   - ini sangat penting karena output-nya harus sesuai untuk di tulis pada file script **libinput-brightness.sh**:
 ```
 #!/bin/sh
 
@@ -37,13 +40,15 @@ done
 4. Pindahkan file script berikut ke <mark>/usr/local/bin/</mark>
    - brightness.sh
    - libinput-brightness.sh
-``` sudo mv brightness.sh /usr/local/bin/ && sudo mv libinput-brightness.sh
 ```
-5. Edit file libinput-brightness.sh, ganti: <mark>dev/input/eventX</mark>
-    ubah menjadi device event yang sudah dicek di langkah 2 (misal /dev/input/event4)
+sudo mv brightness.sh /usr/local/bin/ && sudo mv libinput-brightness.sh
+```
+5. Edit file **libinput-brightness.sh**, ganti: <mark>dev/input/eventX</mark>
+   - ubah menjadi device event yang sudah dicek di langkah 2 (misal /dev/input/event4)
 
 6. Jadikan executable:
-   ``` sudo chmod +x /usr/local/bin/brightness.sh
+   ```
+   sudo chmod +x /usr/local/bin/brightness.sh
            sudo chmod +x /usr/local/bin/libinput-brightness.sh
    ```
 7. Pastikan user anda masuk dalam grup <mark>video</mark>:
