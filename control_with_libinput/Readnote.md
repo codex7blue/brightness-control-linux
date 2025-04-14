@@ -37,6 +37,7 @@ libinput debug-events --device /dev/input/event* | while read -r line; do
     esac
 done
    ```
+
 4. Pindahkan file script berikut ke <mark>/usr/local/bin/</mark>
    - brightness.sh
    - libinput-brightness.sh
