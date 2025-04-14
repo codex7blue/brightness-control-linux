@@ -143,19 +143,11 @@ sudo sv status libinput-brightness
 ```
     - Harusnya muncul status "run" beserta pid
 
-[ ] 8. Cek user yang menjalankan service:
-```
-ps aux | grep libinput-brightness.sh
-```
-    - Harusnya tertulis:
-```
-root     <pid>  0.0  ... /usr/local/bin/libinput-brightness.sh
-```
-[ ] 9. Tes tombol brightness:
+[ ] 8. Tes tombol brightness:
        - Tekan tombol brightness up & down
        - Cek apakah brightness naik/turun
 
-[ ] 10. Cek file brightness:
+[ ] 9. Cek file brightness:
 ```
 cat /sys/class/backlight/*/brightness
 ```
