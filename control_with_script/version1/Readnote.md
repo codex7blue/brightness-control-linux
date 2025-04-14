@@ -46,7 +46,7 @@ sxhkd &
 
 
 ## penjelasan isi script set-brightness.sh
-
+```
 #!/bin/sh
 
 # Ambil direktori backlight pertama yang tersedia
@@ -79,3 +79,4 @@ esac
 
 ## Tulis nilai brightness baru
 echo "$new" > "$backlight/brightness"
+```
