@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# redirect stderr to stdout
+exec 2>&1
+
+# Restore brightness
+for card in $(find /sys/class/backlight/ -type l); do
+    storage_file="/var/cache/backlight/$(basename "$card")-brightness-old"
+    if [ -r "$storage_file" ]; then
+        printf "%s" "$(cat "$storage_file")" > "$card/brightness"
+    fi
+done
+
+# Execution brightness script listener
+exec /usr/local/bin/libinput-brightness.sh
